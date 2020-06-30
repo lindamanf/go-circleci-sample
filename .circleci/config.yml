@@ -1,0 +1,11 @@
+varsion: 3
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.13
+    working_directory: /go/src/github.com/lindamanf/ci-cd-test
+    steps:
+      - checkout
+      - run: go get -v -t -d ./...
+      # テストコードがあれば、 `go test` で実行
+      - run: go test -v ./...
